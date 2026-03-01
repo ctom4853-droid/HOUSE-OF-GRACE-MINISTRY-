@@ -1,0 +1,175 @@
+:root {
+            --primary-blue: #1e3a5f;
+            --primary-gold: #d4af37;
+            --accent-gold: #f4d03f;
+            --deep-navy: #0f172a;
+            --soft-white: #fafafa;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-white);
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .text-gold {
+            color: var(--primary-gold);
+        }
+        
+        .bg-navy {
+            background-color: var(--deep-navy);
+        }
+        
+        .bg-church-blue {
+            background-color: var(--primary-blue);
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(15,23,42,0.8) 50%, rgba(30,58,95,0.6) 100%);
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.95);
+        }
+        
+        .live-pulse {
+            animation: pulse-red 2s infinite;
+        }
+        
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+        }
+        
+        .btn-live {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            animation: pulse-red 2s infinite;
+        }
+        
+        .ministry-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .ministry-card:hover .ministry-icon {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--primary-gold);
+        }
+        .reveal{
+            opacity: 1;
+            transform: translateY(0px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: var(--primary-gold);
+        }
+        
+        .giving-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .stream-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        
+        .stream-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        .dollar{
+            border-radius: 12px;
+            padding: 16px; 
+            background-color: #ffffff;
+            color: black;
+            height: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            justify-content: center;
+            opacity: 2;
+        }
+        .dollar:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0,0.15);
+        }
+    .dollar p {
+            margin: 8px 0;
+        }  
+        .dollar button{
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }  
+        form{
+            transition: all 0.3s ease;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        form:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        form:focus-within{
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.5);
+        }

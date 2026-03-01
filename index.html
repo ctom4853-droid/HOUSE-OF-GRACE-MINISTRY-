@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Grace Church | Welcome Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="IMG_20260218_143815_222.jpg" alt="House of Grace Logo" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-lg">
+                    <span class="text-xl font-bold serif text-white nav-text transition-colors duration-300">House of Grace</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-yellow-400 transition-colors text-sm uppercase tracking-wider font-medium">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-yellow-400 transition-colors text-sm uppercase tracking-wider font-medium">About</a>
+                    <a href="#giving" class="nav-link text-white hover:text-yellow-400 transition-colors text-sm uppercase tracking-wider font-medium">Giving</a>
+                    <a href="#contact" class="nav-link text-white hover:text-yellow-400 transition-colors text-sm uppercase tracking-wider font-medium">Contact</a>
+                    
+                    <!-- Live Button -->
+                    <a href="https://vt.tiktok.com/ZS9e7THbP5Keu-WYgF1/e" target="_blank" class="btn-live px-6 py-2 rounded-full text-white text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
+                        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                        Watch Live on TikTok
+                    </a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-white nav-text">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-xl">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-gray-800 hover:text-yellow-600 font-medium">Home</a>
+                <a href="#about" class="block text-gray-800 hover:text-yellow-600 font-medium">About</a>
+                <a href="#giving" class="block text-gray-800 hover:text-yellow-600 font-medium">Giving</a>
+                <a href="#contact" class="block text-gray-800 hover:text-yellow-600 font-medium">Contact</a>
+                <a href="https://www.tiktok.com/@apostlewilsonodiase?_r=1&_t=ZS-94EYyauECkk" target="_blank" class="block text-red-600 font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+                    Watch Live on tiktok
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Live Stream -->
+    <section id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
+        <!-- Background -->
+        <div class="absolute inset-0 z-0">
+            <img src="/mnt/kimi/upload/1000268945.jpg" alt="Church Background" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"></div>
+        </div>
+        
+        <!-- Live Stream Container -->
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-4 mb-12">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 rounded-full px-4 py-2 mb-4">
+                    <span class="w-3 h-3 bg-red-500 rounded-full animate-pulse live-pulse"></span>
+                    <span class="text-red-400 font-semibold text-sm uppercase tracking-wider">Live Now</span>
+                </div>
+                <h1 class="serif text-4xl md:text-6xl text-white font-light mb-4">
+                    Join Us <span class="gold-gradient italic">on youtube</span>
+                </h1>
+                <p class="text-gray-300 max-w-2xl mx-auto">Experience the power of worship from anywhere in the world</p>
+            </div>
+            
+            <!-- YouTube Live Embed -->
+            <div class="stream-embed shadow-2xl border-4 border-yellow-400/30">
+                <iframe 
+                    src="https://www.youtube.com/embed/k_fdpUa7-t8?si=rzUbyxaAkjOv4ton" 
+                    title="House of Grace Live Stream"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div class="mt-6 flex flex-wrap justify-center gap-4">
+                <a href="https://youtube.com/@apostlewilsonodiase/live" target="_blank" class="btn-live px-8 py-3 rounded-full text-white font-bold flex items-center gap-2 hover:scale-105 transition-transform">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                    Open in YouTube
+                </a>
+                <button onclick="document.getElementById('service-times').scrollIntoView({behavior: 'smooth'})" class="px-8 py-3 rounded-full border-2 border-yellow-400 text-yellow-400 font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    Service Times
+                </button>
+            </div>
+        </div>
+        
+        <!-- Floating decorative elements -->
+        <div class="absolute top-1/4 left-10 w-32 h-32 border border-yellow-400/20 rounded-full float-animation"></div>
+        <div class="absolute bottom-1/3 right-20 w-24 h-24 border border-white/10 rounded-full float-animation" style="animation-delay: 2s;"></div>
+    </section>
+
+    <!-- Service Times Banner -->
+    <section id="service-times" class="bg-church-blue py-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="/mnt/kimi/upload/1000268944.jpg" alt="Pattern" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="reveal">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-yellow-400/20 flex items-center justify-center">
+                        <i data-lucide="sun" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-2">Sunday Service</h3>
+                    <p class="text-gray-300">9:00 AM & 11:00 AM WAT</p>
+                </div>
+                <div class="reveal">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-yellow-400/20 flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-2">Bible Study</h3>
+                    <p class="text-gray-300">Monday 5:00 PM WAT</p>
+                </div>
+                <div class="reveal">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-yellow-400/20 flex items-center justify-center">
+                        <i data-lucide="users" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-white font-semibold text-lg mb-2">counselling services</h3>
+                    <p class="text-gray-300">Wednesday 9:00 AM WAT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="text-yellow-600 font-semibold tracking-wider uppercase text-sm">About Us</span>
+                    <h2 class="serif text-4xl md:text-5xl text-gray-900 mt-2 mb-6">Welcome to <span class="italic text-yellow-600">House of Grace</span></h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        House of Grace Church is a vibrant community of believers dedicated to spreading the Gospel of Jesus Christ. Under the leadership of Apostle Wilson Odiase, we are committed to teaching the undiluted Word of God and raising a generation of truth-seekers.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Our philosophy is rooted in the truth that "truth will not always be fare to those that are against the truth, but we can do nothing against the truth, but for the truth" (2 Corinthians 13:8).
+                    </p>
+                    
+                    <div class="bg-slate-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mb-8">
+                        <p class="text-slate-700 italic serif text-lg">
+                            "Truth faces many confrontations. They call it rebel, stubborn, proud, self acclaimed righteous, or in this side of the world, they call it 'I too know'"
+                        </p>
+                        <p class="text-yellow-600 mt-2 font-semibold">— Apostle Wilson Odiase</p>
+                    </div>
+                </div>
+                
+                <div class="relative reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="IMG_20260218_144005_206 - Copy.jpg" alt="Apostle and Wife" class="rounded-2xl shadow-xl w-full h-64 object-cover">
+                        <img src="WhatsApp Image 2026-02-25 at 19.30.42.jpeg" alt="Ministering" class="rounded-2xl shadow-xl w-full h-64 object-cover mt-8">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-yellow-400/10 rounded-full -z-10"></div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 border-2 border-yellow-400/30 rounded-full -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-yellow-600 font-semibold tracking-wider uppercase text-sm">Our Leadership</span>
+                <h2 class="serif text-4xl md:text-5xl text-gray-900 mt-2 mb-4">Meet Our <span class="italic text-yellow-600">Pastors</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift reveal text-center p-8">
+                    <img src="IMG_20260221_102558_086.jpg" alt="Apostle Wilson Odiase" class="w-48 h-48 rounded-full mx-auto object-cover mb-6 border-4 border-yellow-400/20">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Apostle Wilson Odiase</h3>
+                    <p class="text-yellow-600 font-semibold mb-4">Senior Pastor & Founder</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        A visionary leader with a passion for truth and discipleship. Apostle Odiase has dedicated his life to raising a generation that stands firm in God's Word.
+                    </p>
+                    <div class="flex justify-center gap-4 mt-6">
+                        <a href="#" class="social-icon text-gray-400 hover:text-blue-600">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-pink-600">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift reveal text-center p-8">
+                    <img src="WhatsApp Image 2026-02-25 at 19.32.35.jpeg" alt="Pastor Mrs. Odiase" class="w-48 h-48 rounded-full mx-auto object-cover mb-6 border-4 border-yellow-400/20">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2"> Mrs. Odiase</h3>
+                    <p class="text-yellow-600 font-semibold mb-4">Co-Pastor</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        A woman of grace and wisdom, committed to nurturing the church family and empowering women in their walk with Christ.
+                    </p>
+                    <div class="flex justify-center gap-4 mt-6">
+                        <a href="#" class="social-icon text-gray-400 hover:text-blue-600">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-pink-600">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giving Section -->
+    <section id="giving" class="py-24 bg-church-blue text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <img src="/mnt/kimi/upload/1000268944.jpg" alt="Pattern" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-yellow-400 font-semibold tracking-wider uppercase text-sm">Support the Ministry</span>
+                <h2 class="serif text-4xl md:text-5xl mt-2 mb-4">Give with <span class="italic text-yellow-400">Joy</span></h2>
+                <p class="text-gray-300">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." — 2 Corinthians 9:7</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Bank Transfer -->
+                <div class="giving-card rounded-2xl p-8 hover-lift reveal">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                        <i data-lucide="landmark" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Bank Transfer</h3>
+                    <div class="space-y-3 text-gray-600">
+                        <p><span class="font-semibold">Bank:</span> united bank of africa</p>
+                        <p><span class="font-semibold">Account Name:</span> House of Grace Church</p>
+                        <p><span class="font-semibold">Account Number:</span> 1027697811</p >
+                    </div>
+                    <button onclick="copyToClipboard('1027697811')" class="mt-6 w-full py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        Copy Account Number
+                    </button>
+                </div>
+                
+                <!-- Online Giving -->
+                <div class="giving-card rounded-2xl p-8 hover-lift reveal border-2 border-yellow-400/50 relative">
+                    <div class="absolute top-4 right-4 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-full text-slate-900">RECOMMENDED</div>
+                    <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center mb-6">
+                        <i data-lucide="credit-card" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Online Giving</h3>
+                    <p class="text-gray-600 mb-6">Give securely online using your debit/credit card or mobile money. Fast, secure, and convenient.</p>
+                    <a href="https://paystack.com/pay/houseofgrace" target="_blank" class="block w-full btn-primary py-3 rounded-lg text-white font-semibold text-center hover:shadow-lg transition-all">
+                        Give Online 
+                    </a>
+            
+                </div>
+                <div class="dollar">
+                        <i data-lucide="globe" class="w-8 h-8 text-green-600" style="padding-left: 16px;width: 80px;height: 80px;"></i>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">DOLLAR ACCOUNT</h3>
+                        <p><span class="font-semibold">dollar:</span> polaris bank</p>
+                        <p><span class="font-semibold">Account Name:</span> wilson aisirowen odiase</p> 
+                        <p><span class="font-semibold">swift code:</span> PRDTNGLA</p >
+                
+                        <button onclick="copyToClipboard('PRDTNGLA')" class="mt-6 w-full py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        Copy Swift Code
+                    </button> 
+                </div>
+                </div>
+            <div class="mt-12 text-center reveal">
+                <p class="text-gray-300 text-sm mb-4">For offering envelopes, tithe declarations, or partnership inquiries:</p>
+                <a href="mailto:giving@houseofgrace.church" class="text-yellow-400 hover:text-yellow-300 font-semibold flex items-center justify-center gap-2">
+                    apostlewilson@live.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sermons/Archive Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span class="text-yellow-600 font-semibold tracking-wider uppercase text-sm">Watch & Listen</span>
+                    <h2 class="serif text-4xl md:text-5xl text-gray-900 mt-2">Latest <span class="italic text-yellow-600">Messages</span></h2>
+                </div>
+                <a href="" target="_blank" class="mt-4 md:mt-0 text-red-600 font-semibold hover:text-red-700 flex items-center gap-2 group">
+                    View All on YouTube
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Sermon 1 -->
+                <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-lg hover-lift reveal group cursor-pointer" onclick="window.open('https://youtu.be/jFY2TUSEGRk?si=o8P3Fer6RvmbG5eQ', '_blank')">
+                    <div class="relative h-48 bg-slate-200 flex items-center justify-center">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-slate-400 group-hover:text-red-600 transition-colors"></i>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-yellow-600 text-sm font-semibold">Latest Sermon</span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2">making conquest through praise</h3>
+                        <p class="text-gray-600 text-sm">Apostle Wilson Odiase</p>
+                    </div>
+                </div>
+                
+                <!-- Sermon 2 -->
+                <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-lg hover-lift reveal group cursor-pointer" onclick="window.open('https://youtu.be/tKXyrTVD3MY?si=JYqggxrD55IJ5qsL', '_blank')">
+                    <div class="relative h-48 bg-slate-200 flex items-center justify-center">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-slate-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-yellow-600 text-sm font-semibold">HARVEST 2025</span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2">HARVEST WITH JOY 2025 .REV.NOSAKHARE ALOHAN</h3>
+                        <p class="text-gray-600 text-sm">Mrs. Odiase</p>
+                    </div>
+                </div>
+                
+                <!-- Sermon 3 -->
+                <div class="bg-slate-50 rounded-2xl overflow-hidden shadow-lg hover-lift reveal group cursor-pointer" onclick="window.open('https://youtu.be/dbJQruOEP9Y?si=qltHgISmuDzi8Q_z', '_blank')">
+                    <div class="relative h-48 bg-slate-200 flex items-center justify-center">
+                        <i data-lucide="play-circle" class="w-16 h-16 text-slate-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-yellow-600 text-sm font-semibold">Bible Study</span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2">A PRAYER AGAINST DEATH</h3>
+                        <p class="text-gray-600 text-sm">Apostle Wilson Odiase</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <span class="text-yellow-600 font-semibold tracking-wider uppercase text-sm">Connect With Us</span>
+                    <h2 class="serif text-4xl md:text-5xl text-gray-900 mt-2 mb-6">Get in <span class="italic text-yellow-600">Touch</span></h2>
+                    <p class="text-gray-600 mb-8">We'd love to hear from you. Connect with us through any of these platforms or visit us in person.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-yellow-600"></i>
+                            </div>
+                            <div> 
+                                 <h4 class="font-bold text-gray-900 mb-1">Church Address</h4>
+                            <p class="text-gray-600">House of Grace Church<br>church road,osahon erhauyi street,idogbo bybass<br>Edo, Nigeria</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-yellow-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Phone</h4>
+                                <p class="text-gray-600">+234 811 850 9589</p> 
+                                <p class="text-gray-600">+234 912 491 5120</p>                    
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6 text-yellow-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Email</h4>
+                                <p class="text-gray-600">Wilsonaisiriowenministry@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="mt-10">
+                        <h4 class="font-bold text-gray-900 mb-4">Follow Us</h4>
+                        <div class="flex gap-4">
+                            <a href="https://youtube.com/@apostlewilsonodiase?si=SkGT4fZnadCokiVW" target="_blank" class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="youtube" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@apostlewilsonodiase?_r=1&_t=ZS-94EYyauECkk" target="_blank" class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="music-2" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://t.me/houseofgracechurch" target="_blank" class="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="send" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.facebook.com/apostlewilson.odiase/" target="_blank" class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="facebook" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.instagram.com/apostlewilsonodiase/" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us your prayer request</h3>
+                        <div class="space-y-4">
+                    <form class="reveal.bg" action="https://formsubmit.co/houseofgrace1church@gmail.com" method="POST">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" name="first_name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all" placeholder="John">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text"  name="last_name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all" placeholder="Doe">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all" placeholder="john@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary py-4 rounded-lg text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Quick Contact Buttons -->
+                    <div class="mt-6 grid grid-cols-2 gap-4">
+                        <a href="https://wa.me/2348052223221" target="_blank" class="flex items-center justify-center gap-2 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            WhatsApp
+                        </a>
+                        <a href="https://t.me/houseofgracechurch" target="_blank" class="flex items-center justify-center gap-2 bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Telegram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="IMG_20260218_143815_222.jpg" alt="Logo" class="w-12 h-12 rounded-full border-2 border-yellow-400">
+                        <span class="text-xl font-bold serif">House of Grace</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        A place where truth is taught, grace is experienced, and lives are transformed.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-yellow-400">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#giving" class="hover:text-white transition-colors">Giving</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="https://youtube.com/@apostlewilsonodiase?si=k3oCcGlUPxqeBKIV" target="_blank" class="hover:text-red-400 transition-colors flex items-center gap-1">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            Watch Live
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-yellow-400">Connect</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="https://youtube.com/@apostlewilsonodiase?si=k3oCcGlUPxqeBKIV" target="_blank" class="hover:text-white transition-colors">YouTube</a></li>
+                        <li><a href="https://www.tiktok.com/@apostlewilsonodiase?_r=1&_t=ZS-94EYyauECkk" target="_blank" class="hover:text-white transition-colors">TikTok</a></li>
+                        <li><a href="https://t.me/houseofgracechurch" target="_blank" class="hover:text-white transition-colors">Telegram</a></li>
+                        <li><a href="https://facebook.com/apostlewilsonodiase/" target="_blank" class="hover:text-white transition-colors">Facebook</a></li>
+                        <li><a href="https://instagram.com/apostlewilsonodiase/" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-yellow-400"> weekly Service Times</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex justify-between">
+                            <span>Sunday Service</span>
+                            <span class="text-white">9:00 & 11:00 AM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>monday bible study</span>
+                            <span class="text-white">5:00-7:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Wednesday Counseling service</span>
+                            <span class="text-white">9:00 aM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-sm">&copy; 2024 House of Grace Church. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+   <script src="script.js" defer></script>
+</body>
+</html>
