@@ -42,6 +42,15 @@ let siteData = {
     sunday: { title: 'Sunday Service', time: '9:00 AM & 11:00 AM WAT' },
     monday: { title: 'Bible Study', time: 'Monday 5:00 PM WAT' },
     wednesday: { title: 'Counselling Services', time: 'Wednesday 9:00 AM WAT' }
+  },
+  liveSchedule: {
+    0: { enabled: false, start: '20:00', end: '22:00' }, // Sunday
+    1: { enabled: false, start: '20:00', end: '22:00' }, // Monday
+    2: { enabled: false, start: '20:00', end: '22:00' }, // Tuesday
+    3: { enabled: false, start: '20:00', end: '22:00' }, // Wednesday
+    4: { enabled: false, start: '20:00', end: '22:00' }, // Thursday
+    5: { enabled: false, start: '20:00', end: '22:00' }, // Friday
+    6: { enabled: false, start: '20:00', end: '22:00' }, // Saturday
   }
 };
 
@@ -133,18 +142,15 @@ async function loadSiteData() {
 // ==========================================
 
 function applySiteData() {
-  // Logo
   if (siteData.logo) {
     document.querySelectorAll('.church-logo').forEach(img => { img.src = siteData.logo; });
   }
 
-  // YouTube embed
   if (siteData.youtubeEmbed) {
     const iframe = document.querySelector('.stream-embed iframe');
     if (iframe) iframe.src = siteData.youtubeEmbed;
   }
 
-  // Activities
   const acts = siteData.activities;
   const actEls = document.querySelectorAll('.service-time-item');
   const days = ['sunday', 'monday', 'wednesday'];
@@ -158,8 +164,100 @@ function applySiteData() {
     }
   });
 
-  // Programme
   renderProgramme();
+  checkLiveStatus(); // recheck live status after data loads
+}
+
+// ==========================================
+// LIVE STATUS CHECK — now uses Firebase schedule
+// ==========================================
+
+function checkLiveStatus() {
+  const now = new Date();
+  const dayIndex = now.getDay(); // 0=Sun, 1=Mon ... 6=Sat
+  const currentTime = now.getHours() * 60 + now.getMinutes(); // current time in minutes
+
+  // Get today's schedule from Firebase data
+  const schedule = siteData.liveSchedule || {};
+  const todaySchedule = schedule[dayIndex];
+
+  let isLive = false;
+
+  if (todaySchedule && todaySchedule.enabled) {
+    // Convert start and end times to minutes for comparison
+    const [startH, startM] = todaySchedule.start.split(':').map(Number);
+    const [endH, endM] = todaySchedule.end.split(':').map(Number);
+    const startMins = startH * 60 + startM;
+    const endMins = endH * 60 + endM;
+
+    isLive = currentTime >= startMins && currentTime < endMins;
+  }
+
+  // Update ALL live indicators on the page
+  document.querySelectorAll('.live-pulse').forEach(el => {
+    const label = el.parentElement.querySelector('span:last-child');
+    if (isLive) {
+      // LIVE — show red pulsing
+      el.style.opacity = '1';
+      if (label) {
+        label.textContent = 'Live Now';
+        label.classList.add('text-red-400');
+        label.classList.remove('text-gray-400');
+      }
+    } else {
+      // OFFLINE — show dimmed
+      el.style.opacity = '0.5';
+      if (label) {
+        label.textContent = 'Offline';
+        label.classList.remove('text-red-400');
+        label.classList.add('text-gray-400');
+      }
+    }
+  });
+}
+
+// Check every minute
+checkLiveStatus();
+setInterval(checkLiveStatus, 60000);
+
+// ==========================================
+// SAVE LIVE SCHEDULE
+// ==========================================
+
+async function saveLiveSchedule() {
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const newSchedule = {};
+
+  dayNames.forEach((name, i) => {
+    const enabled = document.getElementById(`live-day-${i}`).checked;
+    const start = document.getElementById(`live-start-${i}`).value || '20:00';
+    const end = document.getElementById(`live-end-${i}`).value || '22:00';
+    newSchedule[i] = { enabled, start, end };
+  });
+
+  siteData.liveSchedule = newSchedule;
+  await saveToFirebase();
+  checkLiveStatus();
+  showAdminToast('✓ Live schedule saved!');
+}
+
+// Load live schedule into admin fields
+function loadLiveScheduleFields() {
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const schedule = siteData.liveSchedule || {};
+
+  dayNames.forEach((name, i) => {
+    const day = schedule[i] || { enabled: false, start: '20:00', end: '22:00' };
+    const checkbox = document.getElementById(`live-day-${i}`);
+    const startInput = document.getElementById(`live-start-${i}`);
+    const endInput = document.getElementById(`live-end-${i}`);
+    const row = document.getElementById(`live-row-${i}`);
+
+    if (checkbox) checkbox.checked = day.enabled;
+    if (startInput) startInput.value = day.start;
+    if (endInput) endInput.value = day.end;
+    if (row) row.style.opacity = day.enabled ? '1' : '0.4';
+  });
 }
 
 // ==========================================
@@ -259,6 +357,7 @@ function loadAdminFields() {
       prev.style.display = 'block';
     }
   }
+  loadLiveScheduleFields();
 }
 
 // ==========================================
@@ -429,22 +528,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-function checkLiveStatus() {
-  const now = new Date();
-  const isLive = (now.getDay() >= 0 && now.getDay() <= 6) && (now.getHours() >= 20 && now.getHours() < 22);
-  document.querySelectorAll('.live-pulse').forEach(el => {
-    const label = el.parentElement.querySelector('span:last-child');
-    if (!isLive && label) {
-      el.style.opacity = '0.5';
-      label.textContent = 'Offline';
-      label.classList.remove('text-red-400');
-      label.classList.add('text-gray-400');
-    }
-  });
-}
-checkLiveStatus();
-setInterval(checkLiveStatus, 60000);
-
 // ==========================================
 // EXPOSE TO WINDOW
 // ==========================================
@@ -460,12 +543,15 @@ window.clearProgramme = clearProgramme;
 window.previewProgImage = previewProgImage;
 window.previewLogoImage = previewLogoImage;
 window.copyToClipboard = copyToClipboard;
+window.saveLiveSchedule = saveLiveSchedule;
 
 // ==========================================
 // INJECT ADMIN PANEL INTO PAGE
 // ==========================================
 
 function injectAdminPanel() {
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
   const wrap = document.createElement('div');
   wrap.innerHTML = `
     <div id="admin-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;backdrop-filter:blur(6px);">
@@ -516,6 +602,32 @@ function injectAdminPanel() {
           <p style="color:#6b7280;font-size:12px;margin-top:8px;">Paste normal YouTube link — I'll convert it automatically</p>
         </div>
 
+        <!-- LIVE SCHEDULE — NEW SECTION -->
+        <div style="background:#1e293b;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h3 style="color:#d4af37;font-size:15px;font-weight:600;margin-bottom:4px;">🔴 Live Stream Schedule</h3>
+          <p style="color:#6b7280;font-size:12px;margin-bottom:16px;">Tick the days you go live and set the start/end time. The "Live Now" button activates automatically!</p>
+
+          ${dayNames.map((name, i) => `
+          <div id="live-row-${i}" style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;align-items:center;gap:12px;margin-bottom:10px;padding:10px 12px;background:#0f172a;border-radius:8px;opacity:0.4;transition:opacity 0.2s;">
+            <input type="checkbox" id="live-day-${i}"
+              style="width:18px;height:18px;cursor:pointer;accent-color:#d4af37;"
+              onchange="document.getElementById('live-row-${i}').style.opacity = this.checked ? '1' : '0.4'">
+            <label for="live-day-${i}" style="color:white;font-size:14px;font-weight:500;cursor:pointer;">${name}</label>
+            <div>
+              <label style="color:#6b7280;font-size:11px;display:block;margin-bottom:3px;">Start Time</label>
+              <input type="time" id="live-start-${i}" value="20:00"
+                style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid #374151;background:#1e293b;color:white;font-size:13px;outline:none;">
+            </div>
+            <div>
+              <label style="color:#6b7280;font-size:11px;display:block;margin-bottom:3px;">End Time</label>
+              <input type="time" id="live-end-${i}" value="22:00"
+                style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid #374151;background:#1e293b;color:white;font-size:13px;outline:none;">
+            </div>
+          </div>`).join('')}
+
+          <button onclick="saveLiveSchedule()" style="background:linear-gradient(135deg,#dc2626,#991b1b);color:white;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px;margin-top:6px;">🔴 Save Live Schedule</button>
+        </div>
+
         <!-- PROGRAMME -->
         <div style="background:#1e293b;border-radius:12px;padding:20px;margin-bottom:16px;">
           <h3 style="color:#d4af37;font-size:15px;font-weight:600;margin-bottom:4px;">📅 Upcoming Programme</h3>
@@ -529,7 +641,7 @@ function injectAdminPanel() {
             </div>
             <div>
               <label style="color:#9ca3af;font-size:12px;display:block;margin-bottom:5px;">Date & Time *</label>
-              <input id="admin-prog-date" type="datetime-local"
+              <input id="admin-prog-date" type="datetime-local" step="60"
                 style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #374151;background:#0f172a;color:white;font-size:14px;box-sizing:border-box;outline:none;">
             </div>
           </div>
